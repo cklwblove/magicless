@@ -1,19 +1,19 @@
 {
-  "name": "lessmagic",
+  "name": "magicless",
   "version": "1.0.0",
-  "description": "lessmagic is a collection of less mixins.",
+  "description": "magicless is a collection of less mixins.",
   "license": "MIT",
   "keywords": [
     "less",
-    "lessmagic"
+    "magicless"
   ],
   "bugs": {
-    "url": "https://github.com/cklwblove/lessmagic/issues"
+    "url": "https://github.com/cklwblove/magicless/issues"
   },
   "repository": [
     {
       "type": "git",
-      "url": "https://github.com/cklwblove/lessmagic.git"
+      "url": "https://github.com/cklwblove/magicless.git"
     }
   ]
 }
