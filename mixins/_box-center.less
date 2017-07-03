@@ -1,0 +1,34 @@
+//----------------------------------
+//
+//**
+// * 
+// * @authors Administrator (you@example.org)
+// * @date    2017/7/3 16:31
+// * @version $
+// * @desc 使用translate实现盒子的水平、垂直居中
+// */
+//----------------------------------
+
+.center-translate(@direction: both) {
+  position: absolute;
+
+  .direction() when (@direction = both) {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .direction() when (@direction = horizontal) {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  .direction() when (@direction = vertical) {
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  // kickstart it
+  .direction();
+}
+

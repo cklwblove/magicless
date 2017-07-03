@@ -1,0 +1,32 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors Administrator (you@example.org)
+// * @date    2017/7/3 12:47
+// * @version $
+// * @desc 文本多行文字截断
+// * @param {Number} @lines 行数
+// * @param {Number} @line-height 行高
+// */
+//----------------------------------
+
+.line-clamp(@lines, @substract: 0) {
+  text-overflow: ellipsis;
+  & when (@lines = 1) {
+    white-space: nowrap;
+    width: 100% - @substract;
+    overflow: hidden;
+  }
+
+  & when not (@lines = 1) {
+    .flexbox();
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: @lines;
+    line-clamp: @lines;
+    overflow: hidden;
+  }
+
+}
+
