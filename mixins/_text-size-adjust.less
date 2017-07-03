@@ -1,0 +1,18 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors Administrator (you@example.org)
+// * @date    2017/7/3 19:10
+// * @version $
+// * @desc // Text Size Adjust （chrome 下字体过小的问题  -webkit-text-size-adjust: none;）
+// */
+//----------------------------------
+
+
+.text-size-adjust(@text-size-adjust-value: none) {
+  text-size-adjust: @text-size-adjust-value;
+  -webkit-text-size-adjust: @text-size-adjust-value;
+  -ms-text-size-adjust: @text-size-adjust-value;
+  -moz-text-size-adjust: @text-size-adjust-value;
+}
