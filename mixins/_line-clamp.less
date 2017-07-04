@@ -7,16 +7,16 @@
 // * @version $
 // * @desc 文本多行文字截断
 // * @param {Number} @lines 行数
-// * @param {Number} @line-height 行高
+// * @param {Number} @line-height 行高 当@lines=1的时候，@line-height默认传0，相当于截取的字节数
 // */
 //----------------------------------
 
-.line-clamp(@lines, @substract: 0) {
+.line-clamp(@lines, @line-height: 1.4em) {
   text-overflow: ellipsis;
+  overflow: hidden;
   & when (@lines = 1) {
     white-space: nowrap;
-    width: 100% - @substract;
-    overflow: hidden;
+    width: 100% - @line-height;
   }
 
   & when not (@lines = 1) {
@@ -25,7 +25,8 @@
     box-orient: vertical;
     -webkit-line-clamp: @lines;
     line-clamp: @lines;
-    overflow: hidden;
+    line-height: @line-height;
+    max-height: @line-height * @lines;
   }
 
 }

@@ -14,40 +14,40 @@
   & when (@position = top) {
     &:before {
       .hairline-before();
-      height: 1px;
+      height: 1Px;
       width: 100%;
       .transform-origin(50% 0%);
-      .device-pixel-ratio();
+      .pixel-ratio(@position);
     }
   }
   // left
   & when (@position = left) {
     &:before {
       .hairline-before();
-      width: 1px;
+      width: 1Px;
       height: 100%;
       .transform-origin(0% 50%);
-      .device-pixel-ratio();
+      .pixel-ratio(@position);
     }
   }
   // bottom
   & when (@position = bottom) {
     &:after {
       .hairline-after();
-      height: 1px;
+      height: 1Px;
       width: 100%;
       .transform-origin(50% 100%);
-      .device-pixel-ratio();
+      .pixel-ratio(@position);
     }
   }
   // right
   & when (@position = right) {
     &:after {
       .hairline-after();
-      width: 1px;
+      width: 1Px;
       height: 100%;
       .transform-origin(100% 50%);
-      .device-pixel-ratio();
+      .pixel-ratio(@position);
     }
   }
 }
@@ -102,120 +102,74 @@
   z-index: 15;
 }
 
-.device-pixel-ratio(@position) {
-
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 0.75),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 0.75),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 3/4),
-  only screen and (        min-device-pixel-ratio: 0.75),
-  only screen and (                min-resolution: 0.75dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 120dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(0.75);
+.pixel-ratio(@position) {
+  // top or bottom
+  & when (@position = top) or (@position = bottom) {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 2),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 2dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 380dpi) {  // The standard way
+      .scaleY(0.5);
     }
 
-    & when (@position = left) and (@position = right) {
-      .scaleX(0.75);
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 3),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 3),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 3/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 3dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 480dpi) {  // The standard way
+      .scaleY(0.33);
     }
 
-  }
-
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 1),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 1),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 1/1),
-  only screen and (        min-device-pixel-ratio: 1),
-  only screen and (                min-resolution: 1dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 160dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(1);
-    }
-
-    & when (@position = left) and (@position = right) {
-      .scaleX(1);
-    }
-  }
-
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 1.333),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 1.333),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 133/10),
-  only screen and (        min-device-pixel-ratio: 1.333),
-  only screen and (                min-resolution: 1.333dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 213dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(1.333);
-    }
-
-    & when (@position = left) and (@position = right) {
-      .scaleX(1.333);
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 4),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 4),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 4/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 4dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 640dpi) {  // The standard way
+      .scaleY(0.25);
     }
   }
 
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 1.5),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 1.5),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 3/2),
-  only screen and (        min-device-pixel-ratio: 1.5),
-  only screen and (                min-resolution: 1.5dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 240dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(1.5);
+  // left or right
+  & when (@position = left) or (@position = right) {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 2),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 2dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 380dpi) {  // The standard way
+      .scaleX(0.5);
     }
 
-    & when (@position = left) and (@position = right) {
-      .scaleX(1.5);
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 3),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 3),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 3/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 3dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 480dpi) {  // The standard way
+      .scaleX(0.33);
+    }
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 4),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 4),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 4/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 4dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 640dpi) {  // The standard way
+      .scaleX(0.25);
     }
   }
 
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 2),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 2),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 2/1),
-  only screen and (        min-device-pixel-ratio: 2),
-  only screen and (                min-resolution: 2dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 380dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(2);
-    }
 
-    & when (@position = left) and (@position = right) {
-      .scaleX(2);
-    }
-  }
-
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 3),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 3),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 3/1),
-  only screen and (        min-device-pixel-ratio: 3),
-  only screen and (                min-resolution: 3dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 480dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(3);
-    }
-
-    & when (@position = left) and (@position = right) {
-      .scaleX(3);
-    }
-  }
-
-  @media
-  only screen and (-webkit-min-device-pixel-ratio: 4),  // Webkit-based browsers
-  only screen and (   min--moz-device-pixel-ratio: 4),  // Older Firefox browsers (prior to Firefox 16)
-  only screen and (     -o-min-device-pixel-ratio: 4/1),
-  only screen and (        min-device-pixel-ratio: 3),
-  only screen and (                min-resolution: 4dppx),  // 分辨率（resolution） dppx fallback
-  only screen and (                min-resolution: 640dpi) {  // The standard way
-    & when (@position = top) and (@position = bottom) {
-      .scaleY(4);
-    }
-
-    & when (@position = left) and (@position = right) {
-      .scaleX(4);
-    }
-  }
 }
 
 
