@@ -1,7 +1,7 @@
 //----------------------------------
 //
 //**
-// * 
+// *
 // * @authors Administrator (you@example.org)
 // * @date    2017/7/3 14:41
 // * @version $
@@ -9,11 +9,37 @@
 // */
 //----------------------------------
 
-.flexbox() {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+.flexbox(@display: flex) {
+  display: -webkit-box; // Old syntax
+  display: ~"-webkit-@{display}";
+  display: ~"-moz-@{display}";
+  display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
+  display: ~"-ms-@{display}"; // IE11
+  display: @display;
+}
+
+// The 'flex' shorthand
+// This shorthand for `flex-grow`, `flex-shrink` and `flex-basis` combined.
+// The second and third parameters (flex-shrink and flex-basis) are optional.
+// Default is 0 1 auto.
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+.flex(@columns: 1) {
+  -webkit-box-flex: @columns; // Old syntax
+  -webkit-flex: @columns;
+  -moz-flex: @columns;
+  -ms-flex: @columns;
+  flex: @columns;
+}
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+.flex-direction(@direction: row) {
+  -webkit-flex-direction: @direction;
+  -moz-flex-direction: @direction;
+  -ms-flex-direction: @direction;
+  flex-direction: @direction;
 }
 
 .flexbox-inline() {
@@ -46,10 +72,53 @@
   flex-wrap: @fw;
 }
 
+// Flex Direction and Wrap
+// The shorthand for `flex-direction` and `flex-wrap`
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+.flex-flow(@flow: ~"row nowrap") {
+  -webkit-flex-flow: @flow;
+  -moz-flex-flow: @flow;
+  -ms-flex-flow: @flow;
+  flex-flow: @flow;
+}
+
+// Display Order
+// - applies to: flex items
+// <integer>
+.flex-order(@order: 0) {
+  -webkit-flex-order: @order; // Old syntax
+  -webkit-order: @order;
+  -moz-order: @order;
+  -ms-order: @order;
+  order: @order;
+}
+
+// Flex grow factor
+// - applies to: flex items
+// <number>
+.flex-grow(@grow: 0) {
+  -webkit-flex-grow: @grow;
+  -moz-flex-grow: @grow;
+  -ms-flex-grow: @grow;
+  flex-grow: @grow;
+}
+
 .flex-shrink(@fs) {
   -webkit-flex-shrink: @fs;
   -ms-flex: 0 @fs auto;
   flex-shrink: @fs;
+}
+
+// Flex basis
+// - the initial main size of the flex item
+// - applies to: flex itemsnitial main size of the flex item
+// <width>
+.flex-basis(@width: auto) {
+  -webkit-flex-basis: @width;
+  -moz-flex-basis: @width;
+  -ms-flex-basis: @width;
+  flex-basis: @width;
 }
 
 .justify-content(@jc) when (@jc = flex-start) {

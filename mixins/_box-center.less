@@ -1,14 +1,15 @@
 //----------------------------------
 //
 //**
-// * 
+// *
 // * @authors Administrator (you@example.org)
 // * @date    2017/7/3 16:31
 // * @version $
-// * @desc 使用translate实现盒子的水平、垂直居中
+// * @desc 实现盒子的水平、垂直居中
 // */
 //----------------------------------
 
+//  使用translate
 .center-translate(@direction: both) {
   position: absolute;
 
@@ -30,5 +31,16 @@
 
   // kickstart it
   .direction();
+}
+
+// absolute 绝对居中(相对于固定宽高的容器)
+.center-absolute(@width, @height){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -(@width / 2);
+  margin-top: -(@height / 2);
+  width: @width;
+  height: @height;
 }
 
