@@ -14,6 +14,10 @@
   & when (@position = top) {
     &:before {
       .hairline-before();
+      left: 0;
+      top: 0;
+      bottom: auto;
+      right: auto;
       height: 1Px;
       width: 100%;
       .transform-origin(50% 0%);
@@ -24,6 +28,10 @@
   & when (@position = left) {
     &:before {
       .hairline-before();
+      left: 0;
+      top: 0;
+      bottom: auto;
+      right: auto;
       width: 1Px;
       height: 100%;
       .transform-origin(0% 50%);
@@ -34,6 +42,10 @@
   & when (@position = bottom) {
     &:after {
       .hairline-after();
+      left: 0;
+      bottom: 0;
+      right: auto;
+      top: auto;
       height: 1Px;
       width: 100%;
       .transform-origin(50% 100%);
@@ -44,6 +56,10 @@
   & when (@position = right) {
     &:after {
       .hairline-after();
+      right: 0;
+      top: 0;
+      left: auto;
+      bottom: auto;
       width: 1Px;
       height: 100%;
       .transform-origin(100% 50%);
@@ -81,10 +97,6 @@
 .hairline-before() {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: auto;
-  right: auto;
   background-color: @color;
   display: block;
   z-index: 15;
@@ -93,10 +105,6 @@
 .hairline-after() {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: 0;
-  right: auto;
-  top: auto;
   background-color: @color;
   display: block;
   z-index: 15;
@@ -168,8 +176,4 @@
       .scaleX(0.25);
     }
   }
-
-
 }
-
-
