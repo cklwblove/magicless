@@ -5,35 +5,37 @@
 // * @authors Administrator (you@example.org)
 // * @date    2017/7/3 17:32
 // * @version @
-// * @desc http://www.w3cplus.com/preprocessor/sass-triangle-mixin.html
+// * @desc  https://raw.githubusercontent.com/hzlzh/mixins.less/master/mixins.less
 // */
 //----------------------------------
 
-.triangle(@width, @height, @color, @direction) {
-  @width: @width / 2;
-  @color-border-style: @height solid @color;
-  @transparent-border-style: @width solid transparent;
-  height: 0;
+.triangle(@direction: down, @size: 10px, @color: #000) {
+  display: inline-block;
   width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+
+  & when (@direction = down) {
+    border-color: @color transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+    border-width: @size @size 0 @size;
+  }
   & when (@direction = up) {
-    border-bottom: @color-border-style;
-    border-left: @transparent-border-style;
-    border-right: @transparent-border-style;
+    border-color: transparent transparent @color transparent;
+    border-style: dashed dashed solid dashed;
+    border-width: 0 @size @size @size;
   }
   & when ( @direction = right) {
-    border-left: @color-border-style;
-    border-top: @transparent-border-style;
-    border-bottom: @transparent-border-style;
-  }
-  & when (@direction = down) {
-    border-top: @color-border-style;
-    border-left: @transparent-border-style;
-    border-right: @transparent-border-style;
+    border-color: transparent transparent transparent @color;
+    border-style: dashed dashed dashed solid;
+    border-width: @size 0 @size @size;
   }
   & when (@direction = left) {
-    border-right: @color-border-style;
-    border-top: @transparent-border-style;
-    border-bottom: @transparent-border-style;
+    border-color: transparent @color transparent transparent;
+    border-style: dashed solid dashed dashed;
+    border-width: @size @size @size 0;
   }
 }
 
