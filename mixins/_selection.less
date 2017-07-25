@@ -1,0 +1,24 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors Administrator (you@example.org)
+// * @date    2017/7/25 14:21
+// * @version $
+// * @desc 文本选择
+// */
+
+//----------------------------------
+.selection(@color: #b3d4fc) {
+  &::-moz-selection {
+    background: @color;
+    text-shadow: none;
+  }
+
+  &::selection {
+    background: @color;
+    text-shadow: none;
+  }
+
+}
+
