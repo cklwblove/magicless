@@ -1,0 +1,172 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors Administrator (you@example.org)
+// * @date    2017/7/3 14:45
+// * @version $
+// * @desc 移动端1px的线，利用伪类+transfrom: scaleY(0.5)实现
+// * 但是会在部分安卓上出现问题，线条渲染不出来
+// */
+//----------------------------------
+
+.hairline-after(@position, @color)  {
+  // top
+  & when (@position = top) {
+    &:before {
+      .hairline-before();
+      left: 0;
+      top: 0;
+      bottom: auto;
+      right: auto;
+      height: 1Px;
+      width: 100%;
+      .transform-origin(50% 0%);
+      .pixel-ratio(@position);
+    }
+  }
+  // left
+  & when (@position = left) {
+    &:before {
+      .hairline-before();
+      left: 0;
+      top: 0;
+      bottom: auto;
+      right: auto;
+      width: 1Px;
+      height: 100%;
+      .transform-origin(0% 50%);
+      .pixel-ratio(@position);
+    }
+  }
+  // bottom
+  & when (@position = bottom) {
+    &:after {
+      .hairline-before();
+      left: 0;
+      bottom: 0;
+      right: auto;
+      top: auto;
+      height: 1Px;
+      width: 100%;
+      .transform-origin(50% 100%);
+      .pixel-ratio(@position);
+    }
+  }
+  // right
+  & when (@position = right) {
+    &:after {
+      .hairline-before();
+      right: 0;
+      top: 0;
+      left: auto;
+      bottom: auto;
+      width: 1Px;
+      height: 100%;
+      .transform-origin(100% 50%);
+      .pixel-ratio(@position);
+    }
+  }
+}
+
+// For right and bottom
+.hairline-remove(@position) when not (@position = left) and not (@position = top) {
+  &:after {
+    display: none;
+  }
+}
+// For left and top
+.hairline-remove(@position) when not (@position = right) and not (@position = bottom) {
+  &:before {
+    display: none;
+  }
+}
+// For right and bottom
+.hairline-color(@position, @color) when not (@position = left) and not (@position = top) {
+  &:after {
+    background-color: @color;
+  }
+}
+// For left and top
+.hairline-color(@position, @color) when not (@position = right) and not (@position = bottom) {
+  &:before {
+    background-color: @color;
+  }
+}
+
+// hairline-before
+.hairline-before() {
+  content: '';
+  position: absolute;
+  background-color: @color;
+  display: block;
+  z-index: 15;
+}
+
+.pixel-ratio(@position) {
+  // top or bottom
+  & when (@position = top) or (@position = bottom) {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 2),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 2dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 380dpi) {  // The standard way
+      .scaleY(0.5);
+    }
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 3),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 3),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 3/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 3dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 480dpi) {  // The standard way
+      .scaleY(0.33);
+    }
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 4),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 4),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 4/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 4dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 640dpi) {  // The standard way
+      .scaleY(0.25);
+    }
+  }
+
+  // left or right
+  & when (@position = left) or (@position = right) {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 2),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 2dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 380dpi) {  // The standard way
+      .scaleX(0.5);
+    }
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 3),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 3),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 3/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 3dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 480dpi) {  // The standard way
+      .scaleX(0.33);
+    }
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 4),  // Webkit-based browsers
+    only screen and (   min--moz-device-pixel-ratio: 4),  // Older Firefox browsers (prior to Firefox 16)
+    only screen and (     -o-min-device-pixel-ratio: 4/1),
+    only screen and (        min-device-pixel-ratio: 3),
+    only screen and (                min-resolution: 4dppx),  // 分辨率（resolution） dppx fallback
+    only screen and (                min-resolution: 640dpi) {  // The standard way
+      .scaleX(0.25);
+    }
+  }
+}

@@ -7,6 +7,9 @@
     "less",
     "magicless"
   ],
+  "scripts": {
+    "release": "sh ./release.sh"
+  },
   "bugs": {
     "url": "https://github.com/cklwblove/magicless/issues"
   },
