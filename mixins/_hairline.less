@@ -13,7 +13,6 @@
   // top
   & when (@position = top) {
     &:before {
-      .hairline-before();
       left: 0;
       top: 0;
       bottom: auto;
@@ -27,7 +26,6 @@
   // left
   & when (@position = left) {
     &:before {
-      .hairline-before();
       left: 0;
       top: 0;
       bottom: auto;
@@ -41,7 +39,6 @@
   // bottom
   & when (@position = bottom) {
     &:after {
-      .hairline-before();
       left: 0;
       bottom: 0;
       right: auto;
@@ -55,7 +52,6 @@
   // right
   & when (@position = right) {
     &:after {
-      .hairline-before();
       right: 0;
       top: 0;
       left: auto;
@@ -69,14 +65,10 @@
 }
 
 .hairline-background-image(@color) {
-  background-image: linear-gradient(180deg, @color, @color 50%, transparent 50%);
-  background-repeat: no-repeat;
-}
-
-// hairline-before
-.hairline-before() {
   content: "";
   position: absolute;
   display: block;
   z-index: 15;
+  background-image: linear-gradient(180deg, @color, @color 50%, transparent 50%);
+  background-repeat: no-repeat;
 }
