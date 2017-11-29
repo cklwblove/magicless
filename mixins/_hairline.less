@@ -8,7 +8,6 @@
 // * @desc 移动端1px的线 利用伪类+background-image
 // */
 //----------------------------------
-@import "./_hairline-after";
 
 .hairline(@position, @color)  {
   // top
@@ -72,4 +71,12 @@
 .hairline-background-image(@color) {
   background-image: linear-gradient(180deg, @color, @color 50%, transparent 50%);
   background-repeat: no-repeat;
+}
+
+// hairline-before
+.hairline-before() {
+  content: "";
+  position: absolute;
+  display: block;
+  z-index: 15;
 }
