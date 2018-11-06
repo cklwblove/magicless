@@ -1,7 +1,7 @@
 //----------------------------------
 //
 //**
-// * 
+// *
 // * @authors Administrator (you@example.org)
 // * @date    2017/7/3 14:31
 // * @version $
@@ -10,12 +10,44 @@
 //----------------------------------
 
 .placeholder(@color: @input-color-placeholder) {
+  /* Firefox 4-18 */
+  &:-moz-placeholder {
+    color: @color;
+  }
+
   // Firefox
   &::-moz-placeholder {
     color: @color;
     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
-  &:-ms-input-placeholder { color: @color; } // Internet Explorer 10+
-  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+
+  /* - Internet Explorer 10–11
+   - Internet Explorer Mobile 10-11 */
+  &:-ms-input-placeholder {
+    color: @color !important;
+  }
+
+  /* Edge (also supports ::-webkit-input-placeholder) */
+  &::-ms-input-placeholder {
+    color: @color;
+  }
+
+  /* - Chrome ≤56,
+   - Safari 5-10.0
+   - iOS Safari 4.2-10.2
+   - Opera 15-43
+   - Opera Mobile >12
+   - Android Browser 2.1-4.4.4
+   - Samsung Internet
+   - UC Browser for Android
+   - QQ Browser */
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+
+  // Safari and Chrome
+  &::placeholder {
+    color: @color;
+  }
 }
 
