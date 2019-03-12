@@ -1,0 +1,22 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb (you@example.org)
+// * @date    2019/3/12 15:22
+// * @version $
+// * @desc webp 的 CSS 背景兼容方案
+// */
+//----------------------------------
+
+.webpbg(@url) {
+  background-image: url(@url);
+  .webpa & {
+    background-image: url('@{url}.webp');
+  }
+}
+
+// 使用方式
+//  div {
+//  webpbg(xxx);
+//}

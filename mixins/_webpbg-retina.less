@@ -1,0 +1,33 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb (you@example.org)
+// * @date    2019/3/12 15:22
+// * @version $
+// * @desc webp 的 CSS 背景兼容方案 retina兼容图片流量优化
+// */
+//----------------------------------
+
+.retinabg(@file-2x; @reg-2x; @reg-1x; @type) when (isstring(@reg-2x)) {
+
+  background-image: url("@{file-2x}.@{reg-1x}.@{type}");
+  .webpa & {
+    background-image: url('@{file-2x}.@{reg-1x}.@{type}.webp');
+  }
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}.@{reg-2x}.@{type}");
+    .webpa & {
+      background-image: url('@{file-2x}.@{reg-2x}.@{type}.webp');
+    }
+  }
+}
+
+// 使用方式
+// .retinabg(http://cdn1.showjoy.com/images/bb/bb1c8b0d275e4ba2903dc822a03add50.png; 300x300; 150x150; png)
