@@ -1,0 +1,24 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb (you@example.org)
+// * @date    2019-05-08 13:27
+// * @version $
+// * @desc 画圆
+// * 我们画一个 r 为 5px 的圆，如果我们使用 rem 作为单位，我们很快会发现在一些机型上的图案不圆，会呈现椭圆形。这是由于 rem 转 px 会存在精度丢失问题。
+// */
+//----------------------------------
+.circle(@size, @backgroundColor) {
+  width: @size;
+  height: @size;
+  background-color: @backgroundColor;
+  [data-dpr="1"] & {
+    width: @size * 0.5;
+    height: @size * 0.5;
+  }
+  [data-dpr="3"] & {
+    width: @size * 1.5;
+    height: @size * 1.5;
+  }
+}

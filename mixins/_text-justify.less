@@ -1,0 +1,19 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors Administrator (you@example.org)
+// * @date    2017/7/3 19:10
+// * @version $
+// * @desc 文字两端对齐
+// */
+//----------------------------------
+.text-justify() {
+  text-align: justify;
+  text-align-last: justify;
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+}
