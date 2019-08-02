@@ -43,19 +43,19 @@
 @elementSeparator: __;
 @modifierSeparator: --;
 
-.block(@blockName, @content) {
+.b(@blockName; @content) {
   @{blockName} {
     @content();
   }
 }
 
-.element(@elementName, @content) {
+.e(@elementName; @content) {
   &@{elementSeparator}@{elementName} {
     @content();
   }
 }
 
-.modifier(@modifierName, @content) {
+.m(@modifierName; @content) {
   &@{modifierSeparator}@{modifierName} {
     @content();
   }
