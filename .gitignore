@@ -51,6 +51,9 @@ jspm_packages
 # Idea
 .idea
 
+#vs
+.vscode
+
 # Dev
 dev
 
@@ -59,6 +62,4 @@ dist
 
 .project
 .happypack
-
-
-
+.history

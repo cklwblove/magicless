@@ -1,0 +1,21 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb(lwbhtml@163.com)
+// * @date    2019/11/5 10:54
+// * @version $
+// * @desc 使用操作系统的本机字体来接近本机应用程序感觉。
+// * 浏览器查找每个连续的字体，如果可能，则首选第一种字体，如果找不到该字体(在系统上或在CSS中定义)，则返回到下一种字体。
+// * -apple-system 是旧金山，用于iOS和macOS（不是Chrome） BlinkMacSystemFont 是旧金山，在macOS Chrome上使用 Segoe UI 在Windows 10上使用 Roboto 在安卓系统上使用 Oxygen-Sans 是在GNU+Linux上使用的
+// * Ubuntu 是在Linux上使用的
+// * "Helvetica Neue"和Helvetica 在macOS 10.10及以下版本中使用(因为有空格，所以用引号括起来)
+// * Arial 是所有操作系统都广泛支持的字体
+// * sans-serif 如果不支持任何其他字体，则为备用无衬线字体
+// */
+//----------------------------------
+
+.system-font-stack() {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

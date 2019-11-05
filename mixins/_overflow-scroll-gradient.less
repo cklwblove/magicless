@@ -1,0 +1,54 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb(lwbhtml@163.com)
+// * @date    2019/11/5 11:30
+// * @version $
+// * @desc 溢出滚动渐变
+// * @param{Number} @height 渐变高度
+// * @link 效果可见 https://css.30secondsofcode.org/snippet/overflow-scroll-gradient
+// */
+//----------------------------------
+
+.overflow-scroll-gradient(@position: top, @height: 25px, @gradient-color: white) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: @height;
+    background: linear-gradient(rgba(255, 255, 255, 0.001),
+        @gradient-color);
+    /* transparent keyword is broken in Safari */
+    pointer-events: none;
+  }
+
+  // top
+  & when (@position =top) {
+    &::after {
+      top: 0;
+    }
+  }
+
+  // bottom
+  & when (@position =bottom) {
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  // left
+  & when (@position =left) {
+    &::after {
+      left: 0;
+    }
+  }
+
+  // right
+  & when (@position =right) {
+    &::after {
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb(lwbhtml@163.com)
+// * @date    2019/11/5 11:00
+// * @version $
+// * @desc 如果文本长于一行，它将被截断 n 行并以渐变淡入淡出
+// * @param {Number} @lines 行数
+// * @param {Number} @line-height 行高 当@lines=1的时候，@line-height默认传0，相当于截取的字节数
+// * @param {Number} @font-size 字体大小
+// * @param {Number} @gradient-width 渐变宽度
+// * @param {String} @gradient-color 渐变色,要与背景色保持一致
+// * @link https://css.30secondsofcode.org/snippet/truncate-text-multiline
+// */
+//----------------------------------
+
+.truncate-text-multiline(@lines, @line-height: 1.4, @font-size: 14px, @gradient-width, @gradient-color: #fff) {
+  position: relative;
+  display: block;
+  height: @font-size * @lines * @line-height;
+  overflow: hidden;
+  font-size: @font-size;
+  line-height: @line-height;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: @gradient-width;
+    height: @font-size * @line-height;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), @gradient-color 50%);
+    content: '';
+  }
+}
