@@ -1,0 +1,32 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb(lwbhtml@163.com)
+// * @date    2019/12/6 13:43
+// * @version $
+// * @desc loading  摘自vux (https://github.com/airyland/vux/tree/v2/src/styles)
+// */
+//--------
+
+.loading() {
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-name: cloud-loading;
+  animation-timing-function: linear;
+  border-radius: 99em;
+  border: 2px solid #DDD;
+  border-left-color: #666;
+  width: 16px;
+  height: 16px;
+  display: table-cell;
+  vertical-align: middle;
+  @keyframes cloud-loading {
+    from {
+      transform: rotate(0deg)
+    }
+    to {
+      transform: rotate(360deg)
+    }
+  }
+}

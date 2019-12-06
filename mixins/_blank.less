@@ -1,0 +1,25 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb(lwbhtml@163.com)
+// * @date    2019/12/6 13:43
+// * @version $
+// * @desc 空白字符填充，中文对齐  摘自vux (https://github.com/airyland/vux/blob/v2/src/styles/blank.less)
+// * 示例及说明：http://www.zhangxinxu.com/wordpress/2015/01/tips-blank-character-chinese-align/
+// */
+//----------------------------------
+
+.blank-half() {
+  &::before {
+    content: '\2002';
+    speak: none;
+  }
+}
+
+.blank-full() {
+  &::before {
+    content: '\2003';
+    speak: none;
+  }
+}
