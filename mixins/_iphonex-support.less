@@ -1,0 +1,30 @@
+//----------------------------------
+//
+//**
+// *
+// * @authors liwb(lwbhtml@163.com)
+// * @date    2017/7/3 19:10
+// * @version $
+// * @desc @supports隔离兼容模式
+// * 因为只有有齐刘海和底部黑条的机型才需要适配样式，可以用@support配合使用
+// * env 和 constant 只有在 viewport-fit=cover 时候才能生效, 上面使用的safari 的控制台可以检测模拟器中网页开启web inspector.
+// */
+//----------------------------------
+.iphonex-css() {
+  padding-top: constant(safe-area-inset-top); //为导航栏+状态栏的高度 88px
+  padding-top: env(safe-area-inset-top); //为导航栏+状态栏的高度 88px
+  padding-left: constant(safe-area-inset-left); //如果未竖屏时为0
+  padding-left: env(safe-area-inset-left); //如果未竖屏时为0
+  padding-right: constant(safe-area-inset-right); //如果未竖屏时为0
+  padding-right: env(safe-area-inset-right); //如果未竖屏时为0
+  padding-bottom: constant(safe-area-inset-bottom); //为底下圆弧的高度 34px
+  padding-bottom: env(safe-area-inset-bottom); //为底下圆弧的高度 34px
+}
+
+.iphonex-support() {
+  @supports (bottom: constant(safe-area-inset-top)) or (bottom: env(safe-area-inset-top)) {
+    body.iphonex {
+     .iphonex-css();
+    }
+  }
+}
